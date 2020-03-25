@@ -1,7 +1,7 @@
 import Web3 from "web3";
 
 import HelloWorld from "./contracts/HelloWorld.json";
-
+import fightGame from "./contracts/fightGame.json";
 // const options = {
 //   web3: {
 //     block: false,
@@ -34,7 +34,7 @@ const options = {
         42 // Kovan
       ]
     },
-    contracts: [HelloWorld],
+    contracts: [HelloWorld,fightGame],
     events: {
       SimpleStorage: ["StorageSet"]
     }
