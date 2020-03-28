@@ -1,6 +1,7 @@
 import Web3 from "web3";
 
 import HelloWorld from "./contracts/HelloWorld.json";
+import MyERC20 from "./contracts/MyERC20.json";
 import MyERC721 from "./contracts/MyERC721.json";
 // const options = {
 //   web3: {
@@ -34,7 +35,7 @@ const options = {
       42 // Kovan
     ]
   },
-  contracts: [HelloWorld, MyERC721]
+  contracts: [HelloWorld, MyERC20, MyERC721]
   // events: {
   //   SimpleStorage: ["StorageSet"]
   // }
