@@ -1,21 +1,18 @@
 <template>
   <div class="home">
     <v-container>
-      {{ activeAccount }}
+      {{ activeAccount }} // {{ activeBalance }}
       <!-- TODO: V-if drizzle initialized -->
       <v-col class="d-flex" cols="12" sm="6">
-        <!-- <v-select :items="items" label="Outlined style" outlined></v-select> -->
+        <v-select
+          v-model="pickedAccount"
+          :items="arrListAcc"
+          label="Outlined style"
+          outlined
+        ></v-select>
         <v-btn @click="changeAccount">Click</v-btn>
       </v-col>
     </v-container>
-    <!-- {{ activeAccount }}
-    <drizzle-account />
-    <drizzle-contract contractName="fightGame" method="GetAllPlayers" />
-    <drizzle-contract-form
-      contractName="fightGame"
-      method="CreatePlayer"
-      :methodArgs="req"
-    /> -->
   </div>
 </template>
 
@@ -27,16 +24,29 @@ export default {
   computed: {
     // mix the getters into computed with object spread operator
     ...mapGetters({
-      activeAccount: "accounts/activeAccount"
-    })
+      activeAccount: "accounts/activeAccount",
+      activeBalance: "accounts/activeBalance",
+      listAccounts: "listAccounts"
+    }),
+    arrListAcc: function() {
+      return Object.keys(this.listAccounts);
+    }
   },
   data() {
-    return {};
+    return {
+      pickedAccount: ""
+    };
   },
-  mounted() {},
+  mounted() {
+    // init pickedAccount from current state account
+    this.pickedAccount = this.activeAccount;
+  },
   methods: {
     changeAccount() {
-      console.log("hello");
+      this.$store.dispatch("accounts/SET_ACCOUNTS", {
+        activeAccount: this.pickedAccount,
+        accountBalances: this.listAccounts
+      });
     }
   }
 };
