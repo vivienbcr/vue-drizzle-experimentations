@@ -1,7 +1,7 @@
 import Web3 from "web3";
 
 import HelloWorld from "./contracts/HelloWorld.json";
-import fightGame from "./contracts/fightGame.json";
+import MyERC721 from "./contracts/MyERC721.json";
 // const options = {
 //   web3: {
 //     block: false,
@@ -34,9 +34,9 @@ const options = {
         42 // Kovan
       ]
     },
-    contracts: [HelloWorld,fightGame],
-    events: {
-      SimpleStorage: ["StorageSet"]
-    }
+    contracts: [HelloWorld,MyERC721],
+    // events: {
+    //   SimpleStorage: ["StorageSet"]
+    // }
   };
 export default options
