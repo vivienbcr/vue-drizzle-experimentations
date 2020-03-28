@@ -23,20 +23,20 @@ import MyERC721 from "./contracts/MyERC721.json";
 //   }
 // }
 const options = {
-    web3: {
-      block: false,
-      customProvider: new Web3("ws://localhost:8545"),
-      networkWhitelist: [
-        1, // Mainnet
-        3, // Ropsten
-        4, // Rinkeby
-        5, // Goerli
-        42 // Kovan
-      ]
-    },
-    contracts: [HelloWorld,MyERC721],
-    // events: {
-    //   SimpleStorage: ["StorageSet"]
-    // }
-  };
-export default options
+  web3: {
+    block: false,
+    customProvider: new Web3("ws://localhost:8545"),
+    networkWhitelist: [
+      1, // Mainnet
+      3, // Ropsten
+      4, // Rinkeby
+      5, // Goerli
+      42 // Kovan
+    ]
+  },
+  contracts: [HelloWorld, MyERC721]
+  // events: {
+  //   SimpleStorage: ["StorageSet"]
+  // }
+};
+export default options;
