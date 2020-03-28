@@ -1,13 +1,15 @@
 <template>
   <div class="home">
     <v-container>
-      {{ activeAccount }} // {{ activeBalance }}
+      Active account :: {{ activeAccount }} <br />
+      balance ::
+      {{ activeBalance }}
       <!-- TODO: V-if drizzle initialized -->
       <v-col class="d-flex" cols="12" sm="6">
         <v-select
           v-model="pickedAccount"
           :items="arrListAcc"
-          label="Outlined style"
+          label="Choose account"
           outlined
         ></v-select>
         <v-btn @click="changeAccount">Click</v-btn>
@@ -30,16 +32,26 @@ export default {
     }),
     arrListAcc: function() {
       return Object.keys(this.listAccounts);
+    },
+    // pickedAccount trigger at select value, initiated by defaul address, update this.select
+    pickedAccount: {
+      get() {
+        return this.select === false ? this.activeAccount : this.select;
+      },
+      set(nval) {
+        this.select = nval;
+        return nval;
+      }
     }
   },
   data() {
     return {
-      pickedAccount: ""
+      select: false
     };
   },
   mounted() {
     // init pickedAccount from current state account
-    this.pickedAccount = this.activeAccount;
+    // this.pickedAccount = this.activeAccount;
   },
   methods: {
     changeAccount() {
